@@ -159,7 +159,6 @@ google-cloud-resource-manager==1.14.2
 google-cloud-spanner==3.53.0
 google-cloud-storage==2.19.0
 google-cloud-translate==3.20.2
-google-colab @ file:///colabtools/dist/google_colab-1.0.0.tar.gz
 google-crc32c==1.7.1
 google-genai==1.10.0
 google-generativeai==0.8.4
@@ -214,7 +213,6 @@ intel-cmplr-lib-ur==2025.1.0
 intel-openmp==2025.1.0
 ipyevents==2.0.2
 ipyfilechooser==0.6.0
-ipykernel==6.17.1
 ipyleaflet==0.19.2
 ipyparallel==8.8.0
 ipython==7.34.0
@@ -320,8 +318,6 @@ nest-asyncio==1.6.0
 networkx==3.4.2
 nibabel==5.3.2
 nltk==3.9.1
-notebook==6.5.7
-notebook_shim==0.2.4
 numba==0.60.0
 numba-cuda==0.2.0
 numexpr==2.10.2
@@ -501,7 +497,6 @@ soxr==0.5.0.post1
 spacy==3.8.5
 spacy-legacy==3.0.12
 spacy-loggers==1.0.5
-spanner-graph-notebook==1.1.6
 Sphinx==8.2.3
 sphinxcontrib-applehelp==2.0.0
 sphinxcontrib-devhelp==2.0.0
