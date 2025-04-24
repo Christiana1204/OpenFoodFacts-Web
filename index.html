@@ -79,6 +79,61 @@
             <div class="alert alert-warning mt-3 text-center">{{ error }}</div>
         {% endif %}
     </div>
+
+    <!-- Display Products Table -->
+    {% if products %}
+        <h3 class="mt-4">Product Results</h3>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Barcode</th>
+                    <th>Product Name</th>
+                    <th>Ingredients</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product[0] }}</td>
+                        <td>{{ product[1] }}</td>
+                        <td>{{ product[2] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No products found for the selected brand and origin.</p>
+    {% endif %}
+
+    <!-- Display Charts -->
+    {% if brand_chart %}
+        <h3 class="mt-4">Brand Frequency</h3>
+        <img src="{{ url_for('static', filename='charts/brand_chart.png') }}" class="chart-img" alt="Brand Chart">
+    {% endif %}
+    
+    {% if origin_chart %}
+        <h3 class="mt-4">Origin Frequency</h3>
+        <img src="{{ url_for('static', filename='charts/origin_chart.png') }}" class="chart-img" alt="Origin Chart">
+    {% endif %}
+    
+    {% if nutriscore_chart %}
+        <h3 class="mt-4">Nutri-score Distribution</h3>
+        <img src="{{ url_for('static', filename='charts/nutriscore_chart.png') }}" class="chart-img" alt="Nutri-score Chart">
+    {% endif %}
+    
+    {% if wordcloud %}
+        <h3 class="mt-4">Ingredients Wordcloud</h3>
+        <img src="{{ url_for('static', filename='charts/wordcloud.png') }}" class="chart-img" alt="Wordcloud">
+    {% endif %}
+
+    <!-- Download Links -->
+    <h3 class="mt-4">Download Data</h3>
+    <ul class="list-unstyled">
+        <li><a href="{{ url_for('download', filetype='json') }}" class="btn btn-link">Download JSON</a></li>
+        <li><a href="{{ url_for('download', filetype='csv') }}" class="btn btn-link">Download CSV</a></li>
+        <li><a href="{{ url_for('download', filetype='pdf') }}" class="btn btn-link">Download PDF</a></li>
+    </ul>
+
 </main>
 
 <footer>
