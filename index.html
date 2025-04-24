@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🍏 OpenFoodFacts Explorer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://static.openfoodfacts.org/images/icons/favicon-96x96.png" type="image/png">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(to right, #e0f7fa, #fce4ec);
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .form-container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h2, h3 {
+            color: #007BFF;
+        }
+        .chart-img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            text-align: center;
+            color: #888;
+        }
+        .logo {
+            width: 150px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<main class="container my-5 text-center">
+    <!-- App Logo -->
+    <img src="https://static.openfoodfacts.org/images/misc/openfoodfacts-logo-en.svg" alt="OpenFoodFacts Logo" class="logo">
+
+    <!-- Welcome Message -->
+    <h2 class="mb-1">👋 Welcome to the 🧠 OpenFoodFacts Data Explorer!</h2>
+    <p class="text-muted">🗓️ Opened on <strong>{{ date }}</strong> at <strong>{{ time }}</strong></p>
+
+    <!-- Input Form -->
+    <div class="form-container text-start mx-auto mt-4" style="max-width: 500px;">
+        <form method="post" onsubmit="showSpinner()">
+            <div class="mb-3">
+                <label for="brand" class="form-label">Brand</label>
+                <input type="text" class="form-control" name="brand" id="brand"
+                       value="{{ brand or 'Carrefour' }}" required autocomplete="off">
+            </div>
+            <div class="mb-3">
+                <label for="origin" class="form-label">Origin (Country)</label>
+                <input type="text" class="form-control" name="origin" id="origin"
+                       value="{{ origin or 'France' }}" required autocomplete="off">
+            </div>
+            <button id="submitBtn" type="submit" class="btn btn-primary w-100">🔍 Search Products</button>
+        </form>
+
+        <!-- Spinner -->
+        <div id="loading-spinner" class="text-center mt-3" style="display: none;">
+            <div class="spinner-border text-primary" role="status"></div>
+            <p>Loading... Please wait</p>
+        </div>
+
+        <!-- Error Message -->
+        {% if error %}
+            <div class="alert alert-warning mt-3 text-center">{{ error }}</div>
+        {% endif %}
+    </div>
+</main>
+
+<footer>
+    <small>✨ Created with ❤️ for UniLaSalle - MSc Ag. & Food Data Management - 2025</small>
+</footer>
+
+<script>
+    function showSpinner() {
+        document.getElementById('loading-spinner').style.display = 'block';
+        document.getElementById('submitBtn').disabled = true;
+        document.getElementById('submitBtn').innerText = 'Searching...';
+    }
+</script>
+</body>
+</html>
